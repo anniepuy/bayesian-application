@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+
+function FeatureSelection({ headers }) {
+  const [independentFeature, setIndependentFeature] = useState('');
+  const [dependentFeature, setDependentFeature] = useState('');
+
+  return (
+    <div>
+      <h2>Select Features for the Model</h2>
+      <div>
+        <label>Select Independent Feature:</label>
+        <select
+          value={independentFeature}
+          onChange={(e) => setIndependentFeature(e.target.value)}
+        >
+          <option value="" disabled>Select a feature</option>
+          {headers.map((header, index) => (
+            <option key={index} value={header}>
+              {header}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div>
+        <label>Select Dependent Feature:</label>
+        <select
+          value={dependentFeature}
+          onChange={(e) => setDependentFeature(e.target.value)}
+        >
+          <option value="" disabled>Select a feature</option>
+          {headers.map((header, index) => (
+            <option key={index} value={header}>
+              {header}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+}
+
+export default FeatureSelection;
